@@ -12,12 +12,14 @@ public class SpringFrameworkApplication {
 
     public static void main(String[] args) {
 
-        ConfigurableApplicationContext context = SpringApplication.run(SpringFrameworkApplication.class, args);
+        SpringApplication.run(SpringFrameworkApplication.class, args);
 
-
-        ScoreBoard scoreBoard = context.getBean(ScoreBoard.class);
-        Ticket ticket = scoreBoard.newTicket();
-        System.out.println(ticket);
+//        ConfigurableApplicationContext context = SpringApplication.run(SpringFrameworkApplication.class, args);
+//
+//
+//        ScoreBoard scoreBoard = context.getBean(ScoreBoard.class);
+//        Ticket ticket = scoreBoard.newTicket();
+//        System.out.println(ticket);
     }
 
 }
