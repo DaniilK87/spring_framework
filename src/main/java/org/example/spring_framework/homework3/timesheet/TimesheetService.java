@@ -20,11 +20,11 @@ public class TimesheetService {
     }
 
     public Optional<Timesheet> getById(Long id) {
-        return repository.getById(id);
+        return repository.findById(id);
     }
 
     public List<Timesheet> getAll() {
-        return repository.getAll();
+        return repository.findAll();
     }
 
     public Timesheet create(Timesheet timesheet) {
@@ -32,17 +32,17 @@ public class TimesheetService {
             throw new RuntimeException("projectId е может быть null");
         }
 
-        if (projectRepository.getById(timesheet.getProjectId()).isEmpty()) {
+        if (projectRepository.findById(timesheet.getProjectId()).isEmpty()) {
             throw new RuntimeException("Проект с id " + timesheet.getProjectId() + " не существует");
         }
         ZoneId zoneId = ZoneId.of("Europe/Moscow");
         LocalDate localDate = LocalDate.from(LocalDateTime.now(zoneId));
         timesheet.setCreatedAt(localDate);
 
-        return repository.create(timesheet);
+        return repository.save(timesheet);
     }
 
     public void delete(Long id) {
-        repository.delete(id);
+        repository.deleteById(id);
     }
 }

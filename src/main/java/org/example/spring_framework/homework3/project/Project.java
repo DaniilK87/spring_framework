@@ -2,6 +2,9 @@ package org.example.spring_framework.homework3.project;
 
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+
+import javax.persistence.*;
 
 /**
  * 1. Повторить все, что на семниаре
@@ -20,7 +23,13 @@ import lombok.Data;
  */
 
 @Data
+@Entity
+@Table(name = "project")
 public class Project {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @EqualsAndHashCode.Include
     private Long id;
     private String name;
 }

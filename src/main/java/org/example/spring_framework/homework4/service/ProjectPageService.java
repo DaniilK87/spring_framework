@@ -15,7 +15,7 @@ public class ProjectPageService {
     private final ProjectRepository projectRepository;
 
     public Optional<ProjectPageDto> getById(Long id) {
-        Project project = projectRepository.getById(id).orElseThrow();
+        Project project = projectRepository.findById(id).orElseThrow();
         ProjectPageDto projectPageDto = new ProjectPageDto();
         projectPageDto.setId(String.valueOf(project.getId()));
         projectPageDto.setProjectName(project.getName());

@@ -7,6 +7,8 @@ import org.example.spring_framework.homework3.project.Project;
 import org.example.spring_framework.homework3.project.ProjectRepository;
 import org.example.spring_framework.homework3.timesheet.Timesheet;
 import org.example.spring_framework.homework3.timesheet.TimesheetRepository;
+import org.example.spring_framework.homework5.Employee;
+import org.example.spring_framework.homework5.EmployeeRepository;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -25,7 +27,16 @@ public class SpringFrameworkApplication {
             Project project = new Project();
             project.setId((long) i);
             project.setName("Project #" + i);
-            projectRepo.create(project);
+            projectRepo.save(project);
+        }
+
+        EmployeeRepository employeeRepository = ctx.getBean(EmployeeRepository.class);
+        for (int i = 1; i <= 4; i++) {
+            Employee employee = new Employee();
+            employee.setId((long) i);
+            employee.setName("Employee name #" + i);
+            employee.setSurname("Employee surname #" + i);
+            employeeRepository.save(employee);
         }
 
         TimesheetRepository timesheetRepo = ctx.getBean(TimesheetRepository.class);
@@ -37,10 +48,11 @@ public class SpringFrameworkApplication {
             Timesheet timesheet = new Timesheet();
             timesheet.setId((long) i);
             timesheet.setProjectId(ThreadLocalRandom.current().nextLong(1, 6));
+            timesheet.setEmployeeId(ThreadLocalRandom.current().nextLong(6, 10));
             timesheet.setCreatedAt(createdAt);
             timesheet.setMinutes(ThreadLocalRandom.current().nextInt(100, 1000));
 
-            timesheetRepo.create(timesheet);
+            timesheetRepo.save(timesheet);
         }
     }
 
