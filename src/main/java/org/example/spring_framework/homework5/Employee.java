@@ -1,10 +1,11 @@
 package org.example.spring_framework.homework5;
 
 
+import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.persistence.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-import javax.persistence.*;
 
 /**
  * 1. Создать класс Employee - Сотрудник с полями
@@ -20,19 +21,20 @@ import javax.persistence.*;
  * 4.1 Т.е. на проекте может быть несколько сотрдников; один сотрудник может быть на нескольких проектах.
  */
 
-// POST /timesheets
-// {projectId: 1, employeeId: 3}
 @Data
 @Entity
-@Table(name = "employee")
+@Schema(description = "Описание сотрудника")
 public class Employee {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @EqualsAndHashCode.Include
+    @Schema(name = "Employee id", description = "Идентификатор сотрудника", example = "1")
     private Long id;
 
+    @Schema(name = "Employee name", description = "Имя сотрудника", example = "Employee name #1")
     private String name;
 
+    @Schema(name = "Employee surname", description = "Фамилия сотрудника", example = "Employee surname #1")
     private String surname;
 }

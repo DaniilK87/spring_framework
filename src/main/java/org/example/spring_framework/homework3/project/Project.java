@@ -1,10 +1,11 @@
 package org.example.spring_framework.homework3.project;
 
 
+import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.persistence.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-import javax.persistence.*;
 
 /**
  * 1. Повторить все, что на семниаре
@@ -24,12 +25,14 @@ import javax.persistence.*;
 
 @Data
 @Entity
-@Table(name = "project")
+@Schema(description = "Описание проекта")
 public class Project {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @EqualsAndHashCode.Include
+    @Schema(name = "Project id", description = "Идентификатор проекта", example = "1")
     private Long id;
+    @Schema(name = "Project name", description = "Название проекта", example = "Project #1")
     private String name;
 }
