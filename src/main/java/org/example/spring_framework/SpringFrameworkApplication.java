@@ -9,6 +9,10 @@ import org.example.spring_framework.homework3.timesheet.Timesheet;
 import org.example.spring_framework.homework3.timesheet.TimesheetRepository;
 import org.example.spring_framework.homework5.Employee;
 import org.example.spring_framework.homework5.EmployeeRepository;
+import org.example.spring_framework.homework7.model.Role;
+import org.example.spring_framework.homework7.model.User;
+import org.example.spring_framework.homework7.repo.RoleRepository;
+import org.example.spring_framework.homework7.repo.UserRepository;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -22,6 +26,40 @@ public class SpringFrameworkApplication {
 
     public static void main(String[] args) {
         ApplicationContext ctx = SpringApplication.run(SpringFrameworkApplication.class, args);
+
+
+        UserRepository userRepository = ctx.getBean(UserRepository.class);
+        User admin = new User();
+        admin.setLogin("admin");
+        admin.setPassword("$2a$12$LbAPCsHn8ZN5MUDqDmIX7e9n1YlDkCxEt0lW3Q2WuW0M1vteo8jvG"); // admin
+        User user = new User();
+        user.setLogin("user");
+        user.setPassword("$2a$12$.dlnBAYq6sOUumn3jtG.AepxdSwGxJ8xA2iAPoCHSH61Vjl.JbIfq"); // user
+        User rest = new User();
+        rest.setLogin("rest");
+        rest.setPassword("$2y$10$RYvMNSRTe58ZT2RvvXxcneJtmG0jYVQ.i0x0Qgf5b.zeVtOUP4X6O"); // rest
+        admin = userRepository.save(admin);
+        user = userRepository.save(user);
+        rest = userRepository.save(rest);
+
+        RoleRepository roleRepository = ctx.getBean(RoleRepository.class);
+
+        Role adminRole = new Role();
+        adminRole.setId(admin.getId());
+        adminRole.setName("ADMIN");
+        roleRepository.save(adminRole);
+
+        Role userRole = new Role();
+        userRole.setId(user.getId());
+        userRole.setName("USER");
+        roleRepository.save(userRole);
+
+        Role restRole = new Role();
+        restRole.setId(rest.getId());
+        restRole.setName("REST");
+        roleRepository.save(restRole);
+
+
         ProjectRepository projectRepo = ctx.getBean(ProjectRepository.class);
         for (int i = 1; i <= 5; i++) {
             Project project = new Project();
