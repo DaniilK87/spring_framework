@@ -29,7 +29,7 @@ public class TimesheetService {
 
     public Timesheet create(Timesheet timesheet) {
         if (timesheet.getProjectId() == null) {
-            throw new RuntimeException("projectId е может быть null");
+            throw new RuntimeException("projectId не может быть null");
         }
 
         if (projectRepository.findById(timesheet.getProjectId()).isEmpty()) {

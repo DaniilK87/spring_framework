@@ -25,11 +25,9 @@ public class TimesheetController {
     @GetMapping("/{id}") // получить все
     public ResponseEntity<Timesheet> get(@PathVariable @Parameter(description = "Идентификатор табеля") Long id) {
         Optional<Timesheet> ts = service.getById(id);
-
         if (ts.isPresent()) {
             return ResponseEntity.status(HttpStatus.OK).body(ts.get());
         }
-
         return ResponseEntity.notFound().build();
     }
 

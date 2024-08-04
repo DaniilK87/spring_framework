@@ -1,8 +1,5 @@
 package org.example.spring_framework;
 
-import org.example.spring_framework.homework2.ScoreBoard;
-import org.example.spring_framework.homework2.Ticket;
-import org.example.spring_framework.homework2.TicketNumberGenerator;
 import org.example.spring_framework.homework3.project.Project;
 import org.example.spring_framework.homework3.project.ProjectRepository;
 import org.example.spring_framework.homework3.timesheet.Timesheet;
@@ -16,7 +13,7 @@ import org.example.spring_framework.homework7.repo.UserRepository;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.ConfigurableApplicationContext;
+
 
 import java.time.LocalDate;
 import java.util.concurrent.ThreadLocalRandom;
