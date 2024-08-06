@@ -1,5 +1,7 @@
 package org.example.spring_framework.homework3.timesheet;
 
+import org.example.aspect.LoggingMethodNoParam;
+import org.example.aspect.LoggingMethodWithParam;
 import org.example.spring_framework.homework3.project.ProjectRepository;
 import org.springframework.stereotype.Service;
 
@@ -19,10 +21,12 @@ public class TimesheetService {
         this.projectRepository = projectRepository;
     }
 
+    @LoggingMethodWithParam
     public Optional<Timesheet> getById(Long id) {
         return repository.findById(id);
     }
 
+    @LoggingMethodNoParam
     public List<Timesheet> getAll() {
         return repository.findAll();
     }

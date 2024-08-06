@@ -28,42 +28,42 @@ import java.util.Arrays;
  * public Timesheet getById(Long id) {...}
  *
  */
-@Slf4j // Slf4j - Simple logging facade for java
-@Aspect
-@Component
+//@Slf4j // Slf4j - Simple logging facade for java
+//@Aspect
+//@Component
 public class LoggingAspect {
 
 
 
-    @Pointcut("execution(* org.example.spring_framework.homework3.timesheet.TimesheetService.*(..))")
-    public void timesheetServiceMethodsPointcut() {
-    }
-
-    @Before(value = "timesheetServiceMethodsPointcut()")
-    public void beforeTimesheetServiceFindAll(JoinPoint jp) {
-        String methodName = jp.getSignature().getName();
-        log.info("Before -> NoArgs -> TimesheetService.{}", methodName);
-    }
-
-    @Before(value = "execution(* org.example.spring_framework.homework3.timesheet.TimesheetService.getById(..))")
-    public void beforeTimesheetServiceFindById(JoinPoint jp) {
-        String methodName = jp.getSignature().getName();
-        Object type = jp.getArgs()[0].getClass();
-        String args = Arrays.toString(jp.getArgs());
-        log.info("Before -> TimesheetService.{},{},{}", methodName,type,args);
-    }
-
-    @AfterThrowing(value = "timesheetServiceMethodsPointcut()", throwing = "e")
-    public void afterTimesheetServiceCreate(JoinPoint jp, Exception e) {
-        String methodName = jp.getSignature().getName();
-        log.info("AfterThrowing -> TimesheetService.{} -> {}", methodName,e.getClass().getName());
-    }
-
-    @After(value = "execution(* org.example.spring_framework.homework3.timesheet.TimesheetService.delete(..))")
-    public void afterTimesheetServiceDelete(JoinPoint jp) {
-        String methodName = jp.getSignature().getName();
-        Object type = jp.getArgs()[0].getClass();
-        String args = Arrays.toString(jp.getArgs());
-        log.info("After -> TimesheetService.{},{},{}", methodName,type,args);
-    }
+//    @Pointcut("execution(* org.example.spring_framework.homework3.timesheet.TimesheetService.*(..))")
+//    public void timesheetServiceMethodsPointcut() {
+//    }
+//
+//    @Before(value = "timesheetServiceMethodsPointcut()")
+//    public void beforeTimesheetServiceFindAll(JoinPoint jp) {
+//        String methodName = jp.getSignature().getName();
+//        log.info("Before -> NoArgs -> TimesheetService.{}", methodName);
+//    }
+//
+//    @Before(value = "execution(* org.example.spring_framework.homework3.timesheet.TimesheetService.getById(..))")
+//    public void beforeTimesheetServiceFindById(JoinPoint jp) {
+//        String methodName = jp.getSignature().getName();
+//        Object type = jp.getArgs()[0].getClass();
+//        String args = Arrays.toString(jp.getArgs());
+//        log.info("Before -> TimesheetService.{},{},{}", methodName,type,args);
+//    }
+//
+//    @AfterThrowing(value = "timesheetServiceMethodsPointcut()", throwing = "e")
+//    public void afterTimesheetServiceCreate(JoinPoint jp, Exception e) {
+//        String methodName = jp.getSignature().getName();
+//        log.info("AfterThrowing -> TimesheetService.{} -> {}", methodName,e.getClass().getName());
+//    }
+//
+//    @After(value = "execution(* org.example.spring_framework.homework3.timesheet.TimesheetService.delete(..))")
+//    public void afterTimesheetServiceDelete(JoinPoint jp) {
+//        String methodName = jp.getSignature().getName();
+//        Object type = jp.getArgs()[0].getClass();
+//        String args = Arrays.toString(jp.getArgs());
+//        log.info("After -> TimesheetService.{},{},{}", methodName,type,args);
+//    }
 }
